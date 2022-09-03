@@ -30,57 +30,56 @@
                         </li>
 
                         <!-- Button trigger modal -->
-                        <li class="nav-item" type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
+                        <li class="nav-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <a id="nav-option" class="nav-link active fw-semibold" href="#">Blog</a>
                         </li>
+                    </ul>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Some important questions and
+                                        answer</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body overflow-scroll">
+                                    <p>Q1:Diferrence between var,let and const?</p>
+                                    <p>Ans: <b>Var</b>-The scope of a var variable is functional scope.It can be
+                                        updated and
+                                        re-declared into the scope.
+                                        <b>Let</b>-The scope of a let variable is block scope.It can be updated but
+                                        cannot
+                                        be re-declared into the scope.
+                                        <b>Const</b>-The scope of a const variable is block scope.It cannot be
+                                        updated or
+                                        re-declared into the scope.
+                                    </p>
+                                    <p>Q2:Difference between map,filter,find and forEach</p>
+                                    <p>Ans: <b>Map</b>-It loops through every elements in an array and gives an
+                                        array.
+                                        <b>forEach</b>-It is as same as Map.Except is dosen't return by itself.
+                                        <b>filter</b>-It works with an condition.It returns all the element whoever
+                                        filled the condition.
+                                        <b>find</b>-As same as filter except it returns the first element.
+                                    </p>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Some important questions and
-                                            answer</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body overflow-scroll">
-                                        <p>Q1:Diferrence between var,let and const?</p>
-                                        <p>Ans: <b>Var</b>-The scope of a var variable is functional scope.It can be
-                                            updated and
-                                            re-declared into the scope.
-                                            <b>Let</b>-The scope of a let variable is block scope.It can be updated but
-                                            cannot
-                                            be re-declared into the scope.
-                                            <b>Const</b>-The scope of a const variable is block scope.It cannot be
-                                            updated or
-                                            re-declared into the scope.
-                                        </p>
-                                        <p>Q2:Difference between map,filter,find and forEach</p>
-                                        <p>Ans: <b>Map</b>-It loops through every elements in an array and gives an
-                                            array.
-                                            <b>forEach</b>-It is as same as Map.Except is dosen't return by itself.
-                                            <b>filter</b>-It works with an condition.It returns all the element whoever
-                                            filled the condition.
-                                            <b>find</b>-As same as filter except it returns the first element.
-                                        </p>
-
-                                        <p>Q3:Difference between Arrow and regular function.</p>
-                                        <p>Ans:Unlike regular functions, arrow functions do not have their own this .
-                                            The value of this inside an arrow function remains the same throughout the
-                                            lifecycle of the function and is always bound to the value of this in the
-                                            closest non-arrow parent function.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                    </div>
+                                    <p>Q3:Difference between Arrow and regular function.</p>
+                                    <p>Ans:Unlike regular functions, arrow functions do not have their own this .
+                                        The value of this inside an arrow function remains the same throughout the
+                                        lifecycle of the function and is always bound to the value of this in the
+                                        closest non-arrow parent function.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
-                    </ul>
+                    </div>
+
                 </div>
             </div>
         </nav>
@@ -89,7 +88,8 @@
     <hr>
     <main>
         <section>
-            <ul id="categories-container" class="d-flex justify-content-between fw-semibold">
+            <ul id="categories-container"
+                class="d-flex flex-lg-row flex-md-column flex-sm-column flex-column justify-content-between fw-semibold">
 
             </ul>
 
