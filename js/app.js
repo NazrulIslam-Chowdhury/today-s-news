@@ -5,17 +5,16 @@ const loadCategories = async () => {
     displayCategories(data.data.news_category);
 }
 const displayCategories = (categories) => {
-    console.log(categories);
-    const categoryContainer = document.getElementById('categories-container');
 
+    const categoryContainer = document.getElementById('categories-container');
     categories.forEach(category => {
         const categoryPara = document.createElement('li');
-        console.log(categoryPara.lenghth);
         // categoryPara.classList.add('category')
-        categoryPara.innerHTML = `<a class="category text-dark" onclick="loadNews('${category.category_id}')" href="#">${category.category_name}</a>`;
+        categoryPara.innerHTML = `<a class="category text-dark" onclick="toggleSpinner('${(true)}'),loadNews('${category.category_id}')" href="#">${category.category_name}</a>`;
         categoryContainer.appendChild(categoryPara);
 
     });
+
 }
 
 const loadNews = async (id) => {
@@ -24,10 +23,12 @@ const loadNews = async (id) => {
     const data = await res.json();
     displayNews(data.data);
 }
-const displayNews = (newes) => {
+const displayNews = (newses) => {
+
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
-    newes.forEach(news => {
+
+    newses.forEach(news => {
         console.log(news);
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('card');
@@ -56,7 +57,21 @@ const displayNews = (newes) => {
                     </div>
         `;
         newsContainer.appendChild(newsDiv);
+        const newsContainerNode = document.querySelector('#news-container')
+        const resultContainer = document.getElementById('result-container');
+        resultContainer.innerText = `${newsContainerNode.childNodes.length} results found`;
     });
+    toggleSpinner(false);
+}
+
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none');
+    }
+    else {
+        loaderSection.classList.add('d-none')
+    }
 }
 
 loadCategories('Breaking News');
