@@ -10,6 +10,7 @@ const displayCategories = (categories) => {
 
     categories.forEach(category => {
         const categoryPara = document.createElement('li');
+        console.log(categoryPara.lenghth);
         // categoryPara.classList.add('category')
         categoryPara.innerHTML = `<a class="category text-dark" onclick="loadNews('${category.category_id}')" href="#">${category.category_name}</a>`;
         categoryContainer.appendChild(categoryPara);
