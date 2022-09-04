@@ -13,11 +13,10 @@ const loadCategories = async () => {
     }
 }
 const displayCategories = (categories) => {
-    // console.log(categories);
+
     const categoryContainer = document.getElementById('categories-container');
     categories.forEach(category => {
         const categoryPara = document.createElement('li');
-        // categoryPara.classList.add('category')
         categoryPara.innerHTML = `<a class="category text-dark" onclick="toggleSpinner('${(true)}'),loadNews('${category.category_id}')" href="#">${category.category_name}</a>`;
         categoryContainer.appendChild(categoryPara);
 
@@ -39,9 +38,16 @@ const loadNews = async (id) => {
     }
 }
 const displayNews = (newses) => {
-    // console.log(newses);
     const newsContainer = document.getElementById('news-container');
+    const newsContainerNode = document.querySelector('#news-container');
     newsContainer.innerHTML = '';
+    const noNewsMsg = document.getElementById('no-news-message');
+    if (newsContainerNode.childNodes.length === 0) {
+        noNewsMsg.classList.remove('d-none');
+    }
+    else {
+        noNewsMsg.classList.add('d-none');
+    }
     newses.forEach(news => {
         console.log(news);
         const newsDiv = document.createElement('div');
@@ -56,7 +62,7 @@ const displayNews = (newses) => {
                                 <h5 class="card-title fw-bold">${news.title}</h5>
                                 <p class="card-text mt-4">${news.details.slice(0, 300)}...</p>
                             </div>
-                            <div class="d-flex flex-row ms-2 justify-content-around">
+                            <div class="d-flex flex-row ms-2 justify-content-evenly">
                             <div class="d-flex">
                                 <img  class="author-img rounded-circle" src="${news.author.img}alt="...">
                             
@@ -75,10 +81,8 @@ const displayNews = (newses) => {
                     </div>
         `;
         newsContainer.appendChild(newsDiv);
-        const newsContainerNode = document.querySelector('#news-container')
         const resultContainer = document.getElementById('result-container');
         resultContainer.innerText = `${newsContainerNode.childNodes.length} results found`;
-
     });
     toggleSpinner(false);
 }
