@@ -6,7 +6,7 @@ const loadCategories = async () => {
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/news/categories`);
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
     }
     catch {
 
@@ -32,7 +32,7 @@ const loadNews = async (id) => {
     try {
         const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`);
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
     }
     catch {
 
@@ -42,7 +42,6 @@ const displayNews = (newses) => {
     // console.log(newses);
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
-
     newses.forEach(news => {
         console.log(news);
         const newsDiv = document.createElement('div');
@@ -69,7 +68,7 @@ const displayNews = (newses) => {
                             <p>${news.total_view}</p>
                             <p>${news.rating.number}</p>
                             <div>
-                            <button class="bg-info p-2 fw-semibold rounded">Read More</button>
+                            <button onclick="loadNewsDetail('${news._id}')" class="bg-info p-2 fw-semibold rounded" data-bs-toggle="modal" data-bs-target="#newsDetailModal">Read More</button>
                             </div>
                             </div>
                         
@@ -79,6 +78,7 @@ const displayNews = (newses) => {
         const newsContainerNode = document.querySelector('#news-container')
         const resultContainer = document.getElementById('result-container');
         resultContainer.innerText = `${newsContainerNode.childNodes.length} results found`;
+
     });
     toggleSpinner(false);
 }
@@ -92,5 +92,36 @@ const toggleSpinner = isLoading => {
         loaderSection.classList.add('d-none')
     }
 }
+const loadNewsDetail = async (news_id) => {
+    const url = ` https://openapi.programming-hero.com/api/news/${news_id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayNewsDetail(data.data[0]);
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${categoryId}`);
+        const data = await res.json();
+        // console.log(data);
+    }
+    catch {
 
-loadCategories('Breaking News');
+    }
+}
+
+const displayNewsDetail = (news) => {
+    console.log(news);
+    const modalTitle = document.getElementById('newsDetailModalLabel');
+    modalTitle.innerText = 'News Details';
+    const newsDetailContainer = document.getElementById('details-modal');
+    newsDetailContainer.innerHTML = `
+    <p class="fs-3">Category Id:${news.category_id}</p>
+    <img class="w-25 h-25" src="${news.author.img}" class="img-fluid rounded-start" alt="...">
+    <p><b>News Title</b>:${news.title.slice(0, 100)}...</p>
+    <p><b>News Details</b>:${news.details.slice(0, 100)}...</p>
+    <p><b>Author Name</b>:${news.author ? news.author.name : 'Author name not found'}</p>
+    <p><b>Published Date</b>:${news.author.published_date}</p>
+    <p><b>Total Views</b>:${news ? news.total_view : 'No views yet'}
+    `;
+
+}
+
+loadCategories();
