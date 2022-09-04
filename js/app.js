@@ -65,8 +65,8 @@ const displayNews = (newses) => {
                                 <p>${news.author.published_date}</p>
                             </div>
                             </div>
-                            <p>${news.total_view}</p>
-                            <p>${news.rating.number}</p>
+                            <p><i class="fa-solid fa-users-viewfinder"></i> ${news.total_view}</p>
+                            <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> ${news.rating.number}</p>
                             <div>
                             <button onclick="loadNewsDetail('${news._id}')" class="bg-info p-2 fw-semibold rounded" data-bs-toggle="modal" data-bs-target="#newsDetailModal">Read More</button>
                             </div>
